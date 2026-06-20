@@ -25,6 +25,12 @@ let () =
     )
 
 let () =
+  check "latex/mathrm"
+    (Mathml.render (Latex.parse "\\mathrm{d}x"))
+    (math_ns
+   ^ "<mrow><mi mathvariant=\"normal\">d</mi><mi>x</mi></mrow></math>")
+
+let () =
   let doc = Transform.run [ Ast.Paragraph (Inline.parse "a $x^2$ b") ] in
   check "inline/math-in-paragraph" (Render.document doc)
     ("<p>a " ^ math_ns ^ "<msup><mi>x</mi><mn>2</mn></msup></math> b</p>\n")

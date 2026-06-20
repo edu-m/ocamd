@@ -25,6 +25,10 @@ let element buf tag content =
 let rec node buf = function
   | Num n -> element buf "mn" n
   | Ident i -> element buf "mi" i
+  | Upright s ->
+      Buffer.add_string buf "<mi mathvariant=\"normal\">";
+      escape buf s;
+      Buffer.add_string buf "</mi>"
   | Op o -> element buf "mo" o
   | Row xs ->
       Buffer.add_string buf "<mrow>";

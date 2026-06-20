@@ -25,6 +25,7 @@ rule token = parse
       { match Symbols.blackboard (String.make 1 c) with
         | Some s -> IDENT s
         | None -> IDENT (String.make 1 c) }
+  | "\\mathrm" sp* '{' ([^ '{' '}']* as s) '}' { MATHRM (String.trim s) }
   | "\\{" { OP "{" }
   | "\\}" { OP "}" }
   | "\\|" { OP "\xe2\x80\x96" }

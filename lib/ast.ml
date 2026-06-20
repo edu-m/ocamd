@@ -8,6 +8,7 @@ type math =
   | Row of math list
   | Num of string
   | Ident of string
+  | Upright of string
   | Op of string
   | Sup of math * math
   | Sub of math * math
