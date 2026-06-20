@@ -30,6 +30,10 @@ let rec node buf = function
       escape buf s;
       Buffer.add_string buf "</mi>"
   | Op o -> element buf "mo" o
+  | LargeOp o ->
+      Buffer.add_string buf "<mo largeop=\"true\" movablelimits=\"true\">";
+      escape buf o;
+      Buffer.add_string buf "</mo>"
   | Row xs ->
       Buffer.add_string buf "<mrow>";
       List.iter (node buf) xs;

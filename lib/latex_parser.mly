@@ -4,7 +4,7 @@ open Ast
 let prime = Op "\xe2\x80\xb2"
 %}
 
-%token <string> NUM IDENT OP MATHRM
+%token <string> NUM IDENT OP MATHRM LARGEOP
 %token FRAC SQRT
 %token CARET UNDERSCORE
 %token LBRACE RBRACE LPAREN RPAREN LBRACK RBRACK
@@ -45,6 +45,7 @@ base:
   | i = IDENT { Ident i }
   | s = MATHRM { Upright s }
   | o = OP { Op o }
+  | o = LARGEOP { LargeOp o }
   | BAR { Op "|" }
   | LBRACE m = math RBRACE { m }
   | LPAREN m = math RPAREN { Fenced ("(", m, ")") }

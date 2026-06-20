@@ -10,6 +10,7 @@ type math =
   | Ident of string
   | Upright of string
   | Op of string
+  | LargeOp of string
   | Sup of math * math
   | Sub of math * math
   | SubSup of math * math * math

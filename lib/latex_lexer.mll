@@ -7,6 +7,7 @@ let sym name =
   | Symbols.Mi -> IDENT s
   | Symbols.Mo -> OP s
   | Symbols.Mn -> NUM s
+  | Symbols.LargeOp -> LARGEOP s
 }
 
 let digit = ['0'-'9']

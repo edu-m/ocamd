@@ -1,4 +1,4 @@
-type kind = Mi | Mo | Mn
+type kind = Mi | Mo | Mn | LargeOp
 
 let greek =
   [
@@ -44,6 +44,11 @@ let greek =
     ("Omega", "\xce\xa9");
   ]
 
+let misc = [
+  ("ell", "\xe2\x84\x93");
+  ("questeq", "\xe2\x89\x9f");
+]
+
 let operators =
   [
     ("leq", "\xe2\x89\xa4");
@@ -52,6 +57,10 @@ let operators =
     ("ge", "\xe2\x89\xa5");
     ("neq", "\xe2\x89\xa0");
     ("ne", "\xe2\x89\xa0");
+    ("prec", "\xe2\x89\xba");
+    ("preceq", "\xe2\xaa\xaf");
+    ("succeq", "\xe2\xaa\xb0");
+    ("succ", "\xe2\x89\xbb");
     ("equiv", "\xe2\x89\xa1");
     ("approx", "\xe2\x89\x88");
     ("sim", "\xe2\x88\xbc");
@@ -95,8 +104,6 @@ let operators =
     ("infty", "\xe2\x88\x9e");
     ("partial", "\xe2\x88\x82");
     ("nabla", "\xe2\x88\x87");
-    ("sum", "\xe2\x88\x91");
-    ("prod", "\xe2\x88\x8f");
     ("int", "\xe2\x88\xab");
     ("colon", ":");
     ("mid", "\xe2\x88\xa3");
@@ -114,6 +121,13 @@ let operators =
     ("}", "}");
     ("|", "\xe2\x80\x96");
     ("backslash", "\\");
+  ]
+
+let large_operators =
+  [
+    ("sum", "\xe2\x88\x91");
+    ("prod", "\xe2\x88\x8f");
+    ("coprod", "\xe2\x88\x90");
   ]
 
 let functions =
@@ -137,7 +151,9 @@ let table : (string, kind * string) Hashtbl.t = Hashtbl.create 256
 let () =
   List.iter (fun (n, s) -> Hashtbl.replace table n (Mi, s)) greek;
   List.iter (fun (n, s) -> Hashtbl.replace table n (Mo, s)) operators;
-  List.iter (fun n -> Hashtbl.replace table n (Mi, n)) functions
+  List.iter (fun (n, s) -> Hashtbl.replace table n (LargeOp, s)) large_operators;
+  List.iter (fun n -> Hashtbl.replace table n (Mi, n)) functions;
+  List.iter (fun (n, s) -> Hashtbl.replace table n (Mi, s)) misc
 
 let lookup name : kind * string =
   match Hashtbl.find_opt table name with Some r -> r | None -> (Mi, name)
