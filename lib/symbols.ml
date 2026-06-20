@@ -75,8 +75,10 @@ let operators =
     ("lor", "\xe2\x88\xa8");
     ("rightarrow", "\xe2\x86\x92");
     ("to", "\xe2\x86\x92");
+    ("nRightarrow", "\xe2\x86\x9b");
     ("leftarrow", "\xe2\x86\x90");
     ("gets", "\xe2\x86\x90");
+    ("nLeftarrow", "\xe2\x86\x9a");
     ("leftrightarrow", "\xe2\x86\x94");
     ("mapsto", "\xe2\x86\xa6");
     ("Rightarrow", "\xe2\x87\x92");
