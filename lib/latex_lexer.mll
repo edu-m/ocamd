@@ -19,6 +19,8 @@ rule token = parse
   | '\\' [' ' ',' ';' ':' '!' '>'] { token lexbuf }
   | "\\frac" { FRAC }
   | "\\sqrt" { SQRT }
+  | "\\left" { token lexbuf }
+  | "\\right" { token lexbuf }
   | "\\mathbb" sp* '{' sp* (letter as c) sp* '}'
       { match Symbols.blackboard (String.make 1 c) with
         | Some s -> IDENT s
