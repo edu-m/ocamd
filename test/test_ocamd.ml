@@ -31,6 +31,11 @@ let () =
    ^ "<mrow><mi mathvariant=\"normal\">d</mi><mi>x</mi></mrow></math>")
 
 let () =
+  check "latex/mathit"
+    (Mathml.render (Latex.parse "\\mathit{Hom}"))
+    (math_ns ^ "<mi mathvariant=\"italic\">Hom</mi></math>")
+
+let () =
   check "latex/xrightarrow"
     (Mathml.render (Latex.parse "p \\xrightarrow{\\mu} q"))
     (math_ns

@@ -26,7 +26,8 @@ rule token = parse
       { match Symbols.blackboard (String.make 1 c) with
         | Some s -> IDENT s
         | None -> IDENT (String.make 1 c) }
-  | "\\mathrm" sp* '{' ([^ '{' '}']* as s) '}' { MATHRM (String.trim s) }
+  | "\\mathrm" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("normal", String.trim s) }
+  | "\\mathit" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("italic", String.trim s) }
   | "\\mathrel" sp* '{' ([^ '{' '}']* as s) '}' { OP (String.trim s) }
   | "\\xrightarrow" { XARROW "\xe2\x86\x92" }
   | "\\xleftarrow" { XARROW "\xe2\x86\x90" }
