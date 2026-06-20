@@ -31,6 +31,18 @@ let () =
    ^ "<mrow><mi mathvariant=\"normal\">d</mi><mi>x</mi></mrow></math>")
 
 let () =
+  check "latex/xrightarrow"
+    (Mathml.render (Latex.parse "p \\xrightarrow{\\mu} q"))
+    (math_ns
+   ^ "<mrow><mi>p</mi><mover><mo stretchy=\"true\">\xe2\x86\x92</mo><mi>\xce\xbc</mi></mover><mi>q</mi></mrow></math>")
+
+let () =
+  check "latex/bigsqcup-limits"
+    (Mathml.render (Latex.parse "\\bigsqcup_{n} \\Phi"))
+    (math_ns
+   ^ "<mrow><msub><mo largeop=\"true\" movablelimits=\"true\">\xe2\xa8\x86</mo><mi>n</mi></msub><mi>\xce\xa6</mi></mrow></math>")
+
+let () =
   let doc = Transform.run [ Ast.Paragraph (Inline.parse "a $x^2$ b") ] in
   check "inline/math-in-paragraph" (Render.document doc)
     ("<p>a " ^ math_ns ^ "<msup><mi>x</mi><mn>2</mn></msup></math> b</p>\n")

@@ -4,7 +4,7 @@ open Ast
 let prime = Op "\xe2\x80\xb2"
 %}
 
-%token <string> NUM IDENT OP MATHRM LARGEOP
+%token <string> NUM IDENT OP MATHRM LARGEOP XARROW
 %token FRAC SQRT
 %token CARET UNDERSCORE
 %token LBRACE RBRACE LPAREN RPAREN LBRACK RBRACK
@@ -52,6 +52,7 @@ base:
   | LBRACK m = math RBRACK { Fenced ("[", m, "]") }
   | FRAC a = arg b = arg { Frac (a, b) }
   | SQRT a = arg { Sqrt a }
+  | g = XARROW a = arg { Xarrow (g, a) }
 
 arg:
   | b = base { b }

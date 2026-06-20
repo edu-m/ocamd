@@ -47,6 +47,7 @@ let greek =
 let misc = [
   ("ell", "\xe2\x84\x93");
   ("questeq", "\xe2\x89\x9f");
+  ("wp", "\xe2\x84\x98");
 ]
 
 let operators =
@@ -64,12 +65,14 @@ let operators =
     ("equiv", "\xe2\x89\xa1");
     ("approx", "\xe2\x89\x88");
     ("sim", "\xe2\x88\xbc");
+    ("simeq", "\xe2\x89\x83");
     ("in", "\xe2\x88\x88");
     ("notin", "\xe2\x88\x89");
     ("subset", "\xe2\x8a\x82");
     ("subseteq", "\xe2\x8a\x86");
     ("supset", "\xe2\x8a\x83");
     ("supseteq", "\xe2\x8a\x87");
+    ("sqsubseteq", "\xe2\x8a\x91");
     ("cup", "\xe2\x88\xaa");
     ("cap", "\xe2\x88\xa9");
     ("emptyset", "\xe2\x88\x85");
@@ -128,6 +131,7 @@ let large_operators =
     ("sum", "\xe2\x88\x91");
     ("prod", "\xe2\x88\x8f");
     ("coprod", "\xe2\x88\x90");
+    ("bigsqcup", "\xe2\xa8\x86");
   ]
 
 let functions =

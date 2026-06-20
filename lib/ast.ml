@@ -17,6 +17,7 @@ type math =
   | Frac of math * math
   | Sqrt of math
   | Fenced of string * math * string
+  | Xarrow of string * math
 
 type inline =
   | Text of string

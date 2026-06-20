@@ -34,6 +34,12 @@ let rec node buf = function
       Buffer.add_string buf "<mo largeop=\"true\" movablelimits=\"true\">";
       escape buf o;
       Buffer.add_string buf "</mo>"
+  | Xarrow (glyph, label) ->
+      Buffer.add_string buf "<mover><mo stretchy=\"true\">";
+      escape buf glyph;
+      Buffer.add_string buf "</mo>";
+      node buf label;
+      Buffer.add_string buf "</mover>"
   | Row xs ->
       Buffer.add_string buf "<mrow>";
       List.iter (node buf) xs;
