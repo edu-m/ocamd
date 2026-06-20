@@ -1,0 +1,7 @@
+(library
+ (name ocamd))
+
+(ocamllex md_lexer latex_lexer)
+
+(menhir
+ (modules latex_parser))
