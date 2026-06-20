@@ -36,6 +36,12 @@ let () =
     (math_ns ^ "<mi mathvariant=\"italic\">Hom</mi></math>")
 
 let () =
+  check "latex/stackrel+mathcal"
+    (Mathml.render (Latex.parse "\\mathcal{G} \\stackrel{?}{=} H"))
+    (math_ns
+   ^ "<mrow><mi mathvariant=\"script\">G</mi><mover><mo>=</mo><mo>?</mo></mover><mi>H</mi></mrow></math>")
+
+let () =
   check "latex/xrightarrow"
     (Mathml.render (Latex.parse "p \\xrightarrow{\\mu} q"))
     (math_ns

@@ -28,9 +28,11 @@ rule token = parse
         | None -> IDENT (String.make 1 c) }
   | "\\mathrm" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("normal", String.trim s) }
   | "\\mathit" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("italic", String.trim s) }
+  | "\\mathcal" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("script", String.trim s) }
   | "\\mathrel" sp* '{' ([^ '{' '}']* as s) '}' { OP (String.trim s) }
   | "\\xrightarrow" { XARROW "\xe2\x86\x92" }
   | "\\xleftarrow" { XARROW "\xe2\x86\x90" }
+  | "\\stackrel" { STACKREL }
   | "\\{" { OP "{" }
   | "\\}" { OP "}" }
   | "\\|" { OP "\xe2\x80\x96" }

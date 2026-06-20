@@ -66,6 +66,7 @@ let operators =
     ("approx", "\xe2\x89\x88");
     ("sim", "\xe2\x88\xbc");
     ("simeq", "\xe2\x89\x83");
+    ("triangleq", "\xe2\x89\x9c");
     ("in", "\xe2\x88\x88");
     ("notin", "\xe2\x88\x89");
     ("subset", "\xe2\x8a\x82");

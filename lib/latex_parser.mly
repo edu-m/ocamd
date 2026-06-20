@@ -6,7 +6,7 @@ let prime = Op "\xe2\x80\xb2"
 
 %token <string> NUM IDENT OP LARGEOP XARROW
 %token <string * string> MATHFONT
-%token FRAC SQRT
+%token FRAC SQRT STACKREL
 %token CARET UNDERSCORE
 %token LBRACE RBRACE LPAREN RPAREN LBRACK RBRACK
 %token BAR PRIME
@@ -54,6 +54,7 @@ base:
   | FRAC a = arg b = arg { Frac (a, b) }
   | SQRT a = arg { Sqrt a }
   | g = XARROW a = arg { Xarrow (g, a) }
+  | STACKREL over = arg base = arg { Over (base, over) }
 
 arg:
   | b = base { b }
