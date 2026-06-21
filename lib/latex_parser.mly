@@ -2,6 +2,8 @@
 open Ast
 
 let prime = Op "\xe2\x80\xb2"
+
+let with_primes b ps = List.fold_left (fun acc _ -> Sup (acc, prime)) b ps
 %}
 
 %token <string> NUM IDENT OP LARGEOP XARROW SPACE
@@ -24,10 +26,10 @@ math:
 
 atom:
   | b = postfixed { b }
-  | b = postfixed CARET sup = arg sub = sub_opt
-      { match sub with None -> Sup (b, sup) | Some s -> SubSup (b, s, sup) }
-  | b = postfixed UNDERSCORE sub = arg sup = sup_opt
-      { match sup with None -> Sub (b, sub) | Some s -> SubSup (b, sub, s) }
+  | b = postfixed CARET sup = arg sub = sub_opt ps = list(PRIME)
+      { with_primes (match sub with None -> Sup (b, sup) | Some s -> SubSup (b, s, sup)) ps }
+  | b = postfixed UNDERSCORE sub = arg sup = sup_opt ps = list(PRIME)
+      { with_primes (match sup with None -> Sub (b, sub) | Some s -> SubSup (b, sub, s)) ps }
 
 sub_opt:
   | { None }

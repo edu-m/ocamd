@@ -42,6 +42,11 @@ let () =
    ^ "<mrow><mi mathvariant=\"script\">G</mi><mover><mo>=</mo><mo>?</mo></mover><mi>H</mi></mrow></math>")
 
 let () =
+  check "latex/prime-after-subscript"
+    (Mathml.render (Latex.parse "e_0'"))
+    (math_ns ^ "<msup><msub><mi>e</mi><mn>0</mn></msub><mo>\xe2\x80\xb2</mo></msup></math>")
+
+let () =
   check "latex/inferrule"
     (Mathml.render (Latex.parse "\\inferrule{A \\quad B}{C}"))
     (math_ns
