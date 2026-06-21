@@ -48,6 +48,8 @@ let misc = [
   ("ell", "\xe2\x84\x93");
   ("questeq", "\xe2\x89\x9f");
   ("wp", "\xe2\x84\x98");
+  ("bot", "\xe2\x8a\xa5");
+  ("top", "\xe2\x8a\xa4");
 ]
 
 let operators =
