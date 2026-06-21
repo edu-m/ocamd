@@ -77,7 +77,7 @@ let operators =
     ("supset", "\xe2\x8a\x83");
     ("supseteq", "\xe2\x8a\x87");
     ("sqsubseteq", "\xe2\x8a\x91");
-    ("sqsubset", "\xe2\x8a\x91");
+    ("sqsubset", "\xe2\x8a\x8f");
     ("cup", "\xe2\x88\xaa");
     ("cap", "\xe2\x88\xa9");
     ("emptyset", "\xe2\x88\x85");
