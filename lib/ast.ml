@@ -19,6 +19,8 @@ type math =
   | Fenced of string * math * string
   | Xarrow of string * math
   | Over of math * math
+  | Infer of math * math
+  | Space of string
 
 type inline =
   | Text of string

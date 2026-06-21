@@ -17,8 +17,16 @@ let sp = [' ' '\t' '\n' '\r']
 
 rule token = parse
   | sp+ { token lexbuf }
-  | '\\' [' ' ',' ';' ':' '!' '>'] { token lexbuf }
+  | '\\' ' ' { SPACE "0.25em" }
+  | "\\," { SPACE "0.167em" }
+  | "\\:" { SPACE "0.222em" }
+  | "\\>" { SPACE "0.222em" }
+  | "\\;" { SPACE "0.278em" }
+  | "\\!" { SPACE "-0.167em" }
+  | "\\quad" { SPACE "1em" }
+  | "\\qquad" { SPACE "2em" }
   | "\\frac" { FRAC }
+  | "\\inferrule" { INFER }
   | "\\sqrt" { SQRT }
   | "\\left" { token lexbuf }
   | "\\right" { token lexbuf }

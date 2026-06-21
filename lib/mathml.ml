@@ -56,6 +56,15 @@ let rec node buf = function
       node buf sup;
       Buffer.add_string buf "</msubsup>"
   | Frac (a, b) -> wrap2 buf "mfrac" a b
+  | Infer (prem, concl) ->
+      Buffer.add_string buf "<mfrac linethickness=\"medium\">";
+      node buf prem;
+      node buf concl;
+      Buffer.add_string buf "</mfrac>"
+  | Space w ->
+      Buffer.add_string buf "<mspace width=\"";
+      Buffer.add_string buf w;
+      Buffer.add_string buf "\"/>"
   | Sqrt a ->
       Buffer.add_string buf "<msqrt>";
       node buf a;

@@ -42,6 +42,12 @@ let () =
    ^ "<mrow><mi mathvariant=\"script\">G</mi><mover><mo>=</mo><mo>?</mo></mover><mi>H</mi></mrow></math>")
 
 let () =
+  check "latex/inferrule"
+    (Mathml.render (Latex.parse "\\inferrule{A \\quad B}{C}"))
+    (math_ns
+   ^ "<mfrac linethickness=\"medium\"><mrow><mi>A</mi><mspace width=\"1em\"/><mi>B</mi></mrow><mi>C</mi></mfrac></math>")
+
+let () =
   check "latex/xrightarrow"
     (Mathml.render (Latex.parse "p \\xrightarrow{\\mu} q"))
     (math_ns
