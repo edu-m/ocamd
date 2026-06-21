@@ -83,6 +83,7 @@ let operators =
     ("sqsubset", "\xe2\x8a\x8f");
     ("cup", "\xe2\x88\xaa");
     ("cap", "\xe2\x88\xa9");
+    ("uplus", "\xe2\x8a\x8e");
     ("emptyset", "\xe2\x88\x85");
     ("forall", "\xe2\x88\x80");
     ("exists", "\xe2\x88\x83");
