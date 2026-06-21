@@ -50,6 +50,7 @@ let misc = [
   ("wp", "\xe2\x84\x98");
   ("bot", "\xe2\x8a\xa5");
   ("top", "\xe2\x8a\xa4");
+  ("blacksquare", "\xe2\x96\xa0");
 ]
 
 let operators =
