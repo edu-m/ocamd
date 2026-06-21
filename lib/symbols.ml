@@ -80,7 +80,9 @@ let operators =
     ("supset", "\xe2\x8a\x83");
     ("supseteq", "\xe2\x8a\x87");
     ("sqsubseteq", "\xe2\x8a\x91");
+    ("sqsupseteq", "\xe2\x8a\x92");
     ("sqsubset", "\xe2\x8a\x8f");
+    ("sqsupset", "\xe2\x8a\x93");
     ("cup", "\xe2\x88\xaa");
     ("cap", "\xe2\x88\xa9");
     ("uplus", "\xe2\x8a\x8e");
