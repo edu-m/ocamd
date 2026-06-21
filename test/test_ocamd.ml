@@ -36,6 +36,24 @@ let () =
     (math_ns ^ "<mi mathvariant=\"italic\">Hom</mi></math>")
 
 let () =
+  check "latex/overline"
+    (Mathml.render (Latex.parse "\\overline{\\alpha}"))
+    (math_ns
+   ^ "<mover accent=\"true\"><mi>\xce\xb1</mi><mo stretchy=\"true\">\xc2\xaf</mo></mover></math>")
+
+let () =
+  check "latex/mathrel-nested-bold"
+    (Mathml.render (Latex.parse "p \\mathrel{\\mathbf{R}} q"))
+    (math_ns
+   ^ "<mrow><mi>p</mi><mrow><mspace width=\"0.278em\"/><mi mathvariant=\"bold\">R</mi><mspace width=\"0.278em\"/></mrow><mi>q</mi></mrow></math>")
+
+let () =
+  check "latex/cases"
+    (Mathml.render (Latex.parse "\\begin{cases} a \\\\ b \\end{cases}"))
+    (math_ns
+   ^ "<mrow><mo>{</mo><mtable columnalign=\"left\"><mtr><mtd><mi>a</mi></mtd></mtr><mtr><mtd><mi>b</mi></mtd></mtr></mtable></mrow></math>")
+
+let () =
   check "latex/stackrel+mathcal"
     (Mathml.render (Latex.parse "\\mathcal{G} \\stackrel{?}{=} H"))
     (math_ns

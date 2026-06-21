@@ -6,9 +6,10 @@ let prime = Op "\xe2\x80\xb2"
 let with_primes b ps = List.fold_left (fun acc _ -> Sup (acc, prime)) b ps
 %}
 
-%token <string> NUM IDENT OP LARGEOP XARROW SPACE
+%token <string> NUM IDENT OP LARGEOP XARROW SPACE MTEXT
 %token <string * string> MATHFONT
-%token FRAC SQRT STACKREL INFER
+%token FRAC SQRT STACKREL INFER OVERLINE MATHREL
+%token BEGINCASES ENDCASES ROWSEP
 %token CARET UNDERSCORE
 %token LBRACE RBRACE LPAREN RPAREN LBRACK RBRACK
 %token BAR PRIME
@@ -22,7 +23,12 @@ main:
   | m = math EOF { m }
 
 math:
-  | atoms = atom* { match atoms with [ x ] -> x | xs -> Row xs }
+  | lead = lead_script* atoms = atom*
+      { match lead @ atoms with [ x ] -> x | xs -> Row xs }
+
+lead_script:
+  | CARET a = arg { Sup (Row [], a) }
+  | UNDERSCORE a = arg { Sub (Row [], a) }
 
 atom:
   | b = postfixed { b }
@@ -59,6 +65,10 @@ base:
   | w = SPACE { Space w }
   | g = XARROW a = arg { Xarrow (g, a) }
   | STACKREL over = arg base = arg { Over (base, over) }
+  | OVERLINE a = arg { Overline a }
+  | s = MTEXT { Mtext s }
+  | MATHREL a = arg { Row [ Space "0.278em"; a; Space "0.278em" ] }
+  | BEGINCASES rows = separated_nonempty_list(ROWSEP, math) ENDCASES { Cases rows }
 
 arg:
   | b = base { b }

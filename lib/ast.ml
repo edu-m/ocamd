@@ -21,6 +21,9 @@ type math =
   | Over of math * math
   | Infer of math * math
   | Space of string
+  | Overline of math
+  | Mtext of string
+  | Cases of math list
 
 type inline =
   | Text of string

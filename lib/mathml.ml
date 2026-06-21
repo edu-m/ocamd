@@ -65,6 +65,20 @@ let rec node buf = function
       Buffer.add_string buf "<mspace width=\"";
       Buffer.add_string buf w;
       Buffer.add_string buf "\"/>"
+  | Overline a ->
+      Buffer.add_string buf "<mover accent=\"true\">";
+      node buf a;
+      Buffer.add_string buf "<mo stretchy=\"true\">\xc2\xaf</mo></mover>"
+  | Mtext s -> element buf "mtext" s
+  | Cases rows ->
+      Buffer.add_string buf "<mrow><mo>{</mo><mtable columnalign=\"left\">";
+      List.iter
+        (fun r ->
+          Buffer.add_string buf "<mtr><mtd>";
+          node buf r;
+          Buffer.add_string buf "</mtd></mtr>")
+        rows;
+      Buffer.add_string buf "</mtable></mrow>"
   | Sqrt a ->
       Buffer.add_string buf "<msqrt>";
       node buf a;

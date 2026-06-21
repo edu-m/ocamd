@@ -25,8 +25,12 @@ rule token = parse
   | "\\!" { SPACE "-0.167em" }
   | "\\quad" { SPACE "1em" }
   | "\\qquad" { SPACE "2em" }
+  | "\\begin{cases}" { BEGINCASES }
+  | "\\end{cases}" { ENDCASES }
+  | "\\\\" { ROWSEP }
   | "\\frac" { FRAC }
   | "\\inferrule" { INFER }
+  | "\\overline" { OVERLINE }
   | "\\sqrt" { SQRT }
   | "\\left" { token lexbuf }
   | "\\right" { token lexbuf }
@@ -37,13 +41,16 @@ rule token = parse
   | "\\mathrm" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("normal", String.trim s) }
   | "\\mathit" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("italic", String.trim s) }
   | "\\mathcal" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("script", String.trim s) }
-  | "\\mathrel" sp* '{' ([^ '{' '}']* as s) '}' { OP (String.trim s) }
+  | "\\mathbf" sp* '{' ([^ '{' '}']* as s) '}' { MATHFONT ("bold", String.trim s) }
+  | "\\text" sp* '{' ([^ '{' '}']* as s) '}' { MTEXT s }
+  | "\\mathrel" { MATHREL }
   | "\\xrightarrow" { XARROW "\xe2\x86\x92" }
   | "\\xleftarrow" { XARROW "\xe2\x86\x90" }
   | "\\stackrel" { STACKREL }
   | "\\{" { OP "{" }
   | "\\}" { OP "}" }
   | "\\|" { OP "\xe2\x80\x96" }
+  | "\\#" { OP "#" }
   | '\\' (letter+ as name) { sym name }
   | num as n { NUM n }
   | letter as c { IDENT (String.make 1 c) }

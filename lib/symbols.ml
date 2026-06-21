@@ -66,6 +66,7 @@ let operators =
     ("approx", "\xe2\x89\x88");
     ("sim", "\xe2\x88\xbc");
     ("simeq", "\xe2\x89\x83");
+    ("cong", "\xe2\x89\x85");
     ("triangleq", "\xe2\x89\x9c");
     ("vdash", "\xe2\x8a\xa2");
     ("models", "\xe2\x8a\xa8");
@@ -91,9 +92,11 @@ let operators =
     ("rightarrow", "\xe2\x86\x92");
     ("to", "\xe2\x86\x92");
     ("nRightarrow", "\xe2\x86\x9b");
+    ("nrightarrow", "\xe2\x86\x9b");
     ("leftarrow", "\xe2\x86\x90");
     ("gets", "\xe2\x86\x90");
     ("nLeftarrow", "\xe2\x86\x9a");
+    ("nleftarrow", "\xe2\x86\x9a");
     ("leftrightarrow", "\xe2\x86\x94");
     ("mapsto", "\xe2\x86\xa6");
     ("Rightarrow", "\xe2\x87\x92");
@@ -123,6 +126,7 @@ let operators =
     ("lceil", "\xe2\x8c\x88");
     ("rceil", "\xe2\x8c\x89");
     ("setminus", "\xe2\x88\x96");
+    ("frown", "\xe2\x8c\xa2");
     ("{", "{");
     ("}", "}");
     ("|", "\xe2\x80\x96");
@@ -135,6 +139,10 @@ let large_operators =
     ("prod", "\xe2\x88\x8f");
     ("coprod", "\xe2\x88\x90");
     ("bigsqcup", "\xe2\xa8\x86");
+    ("bigcup", "\xe2\x8b\x83");
+    ("bigcap", "\xe2\x8b\x82");
+    ("bigwedge", "\xe2\x8b\x80");
+    ("bigvee", "\xe2\x8b\x81");
   ]
 
 let functions =
