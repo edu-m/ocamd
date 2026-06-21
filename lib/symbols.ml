@@ -107,6 +107,10 @@ let operators =
     ("Leftarrow", "\xe2\x87\x90");
     ("Leftrightarrow", "\xe2\x87\x94");
     ("rightharpoonup", "\xe2\x87\x80");
+    ("downarrow", "\xe2\x86\x93");
+    ("uparrow", "\xe2\x86\x91");
+    ("Downarrow", "\xe2\x87\x93");
+    ("Uparrow", "\xe2\x87\x91");
     ("iff", "\xe2\x87\x94");
     ("times", "\xc3\x97");
     ("div", "\xc3\xb7");
