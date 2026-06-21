@@ -6,7 +6,7 @@ let prime = Op "\xe2\x80\xb2"
 let with_primes b ps = List.fold_left (fun acc _ -> Sup (acc, prime)) b ps
 %}
 
-%token <string> NUM IDENT OP LARGEOP XARROW SPACE MTEXT
+%token <string> NUM IDENT OP LARGEOP XARROW ACCENT SPACE MTEXT
 %token <string * string> MATHFONT
 %token FRAC SQRT STACKREL INFER OVERLINE MATHREL
 %token BEGINCASES ENDCASES ROWSEP
@@ -66,6 +66,7 @@ base:
   | g = XARROW a = arg { Xarrow (g, a) }
   | STACKREL over = arg base = arg { Over (base, over) }
   | OVERLINE a = arg { Overline a }
+  | g = ACCENT a = arg { Accent (g, a) }
   | s = MTEXT { Mtext s }
   | MATHREL a = arg { Row [ Space "0.278em"; a; Space "0.278em" ] }
   | BEGINCASES rows = separated_nonempty_list(ROWSEP, math) ENDCASES { Cases rows }

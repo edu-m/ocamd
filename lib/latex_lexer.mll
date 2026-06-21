@@ -31,6 +31,7 @@ rule token = parse
   | "\\frac" { FRAC }
   | "\\inferrule" { INFER }
   | "\\overline" { OVERLINE }
+  | "\\hat" { ACCENT "^" }
   | "\\sqrt" { SQRT }
   | "\\left" { token lexbuf }
   | "\\right" { token lexbuf }

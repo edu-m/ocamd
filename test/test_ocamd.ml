@@ -42,6 +42,12 @@ let () =
    ^ "<mover accent=\"true\"><mi>\xce\xb1</mi><mo stretchy=\"true\">\xc2\xaf</mo></mover></math>")
 
 let () =
+  check "latex/hat"
+    (Mathml.render (Latex.parse "\\hat{x}"))
+    (math_ns
+   ^ "<mover accent=\"true\"><mi>x</mi><mo stretchy=\"false\">^</mo></mover></math>")
+
+let () =
   check "latex/mathrel-nested-bold"
     (Mathml.render (Latex.parse "p \\mathrel{\\mathbf{R}} q"))
     (math_ns

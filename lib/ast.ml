@@ -19,6 +19,7 @@ type math =
   | Fenced of string * math * string
   | Xarrow of string * math
   | Over of math * math
+  | Accent of string * math
   | Infer of math * math
   | Space of string
   | Overline of math

@@ -49,6 +49,12 @@ let rec node buf = function
   | Sup (b, s) -> wrap2 buf "msup" b s
   | Sub (b, s) -> wrap2 buf "msub" b s
   | Over (b, o) -> wrap2 buf "mover" b o
+  | Accent (glyph, b) ->
+      Buffer.add_string buf "<mover accent=\"true\">";
+      node buf b;
+      Buffer.add_string buf "<mo stretchy=\"false\">";
+      escape buf glyph;
+      Buffer.add_string buf "</mo></mover>"
   | SubSup (b, sub, sup) ->
       Buffer.add_string buf "<msubsup>";
       node buf b;
